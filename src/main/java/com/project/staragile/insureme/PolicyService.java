@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class PolicyService {
     
     @Autowired
-    PolicyRepository policyRepository;
+    private PolicyRepository policyRepository;
     
     public Policy createPolicy() {
         Policy policy = generateDummyPolicy();
