@@ -13,7 +13,6 @@ public class PolicyController {
 	@Autowired
 	PolicyService policyService;
 	
-	
 	@GetMapping("/hello")
 	public String sayHello() {
 		return "hello";
@@ -21,24 +20,19 @@ public class PolicyController {
 	
 	@GetMapping("/createPolicy")
 	public Policy createPolicy() {
-		
-		return policyService.CreatePolicy();
-		
-		
+		return policyService.createPolicy();  // Corrected the method call
 	}
 	
 	@PostMapping("/createPolicy")
 	public Policy createPolicy(@RequestBody Policy policy) {
-		if(policy!=null) {
+		if (policy != null) {
 			return policyService.registerPolicy(policy);
 		}
 		return null;
 	}
 
 	@GetMapping("/getPolicy/{policyId}")
-	public Policy getPolicyDetails(@PathVariable(value="policyId") int policyId) {
-		return policyService.getPolicyDetails(policyId);
+	public Policy getPolicyDetails(@PathVariable(value = "policyId") Long policyId) {
+		return policyService.getPolicyDetails(policyId);  // Corrected parameter type to Long
 	}
-	
 }
-
