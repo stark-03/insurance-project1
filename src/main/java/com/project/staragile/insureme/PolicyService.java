@@ -31,7 +31,7 @@ public class PolicyService {
     }
 
     public Policy generateDummyPolicy() {
-        return new Policy(1, "Shubham", "Individual", 10000, "10-Sep-2021", "10-Sep-2022");
+        return new Policy(1L, "Shubham", "Individual", 10000, "10-Sep-2021", "10-Sep-2022");  // Use Long for IDs
     }
 
     public Policy registerPolicy(Policy policy) {
