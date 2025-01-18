@@ -20,16 +20,16 @@ class InsureMeApplicationTests {
 
     @Test
     void testCreatePolicy() {
-        Policy policy = new Policy(null, "Shubham", "Individual", 10000, "10-Sep-2021", "10-Sep-2022");
-        Policy createdPolicy = policyService.createPolicy(policy);
+        Policy policy = new Policy(0, "Shubham", "Individual", 10000, "10-Sep-2021", "10-Sep-2022");
+        Policy createdPolicy = policyService.registerPolicy(policy);
         assertNotNull(createdPolicy.getPolicyId(), "Policy ID should be auto-generated and not null");
         assertEquals("Shubham", createdPolicy.getPolicyHolderName());
     }
 
     @Test
     void testSearchPolicy() {
-        Long nonExistentPolicyId = 999L;
-        Policy policy = policyService.viewPolicy(nonExistentPolicyId);
+        int nonExistentPolicyId = 999;
+        Policy policy = policyService.searchPolicy(nonExistentPolicyId);
         assertEquals(null, policy, "Search should return null for a non-existent policy");
     }
 }
