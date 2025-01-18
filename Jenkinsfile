@@ -49,7 +49,7 @@ pipeline {
         stage('Containerize the Application') {
             steps {
                 echo 'Creating Docker image...'
-                sh "${dockerCMD} build -t addi2/insure-me:${tagName} ."
+                sh "${dockerCMD} build -t addi2/insure-me1:${tagName} ."
             }
         }
 
@@ -59,7 +59,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'dock-password', variable: 'dockerHubPassword')]) {
                     sh """
                         ${dockerCMD} login -u addi2 -p ${dockerHubPassword}
-                        ${dockerCMD} push addi2/insure-me:${tagName}
+                        ${dockerCMD} push addi2/insure-me1:${tagName}
                     """
                 }
             }
