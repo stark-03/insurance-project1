@@ -27,6 +27,7 @@ node {
             """,
             subject: "Job ${JOB_NAME} ${BUILD_NUMBER} has failed",
             to: 'adithyamr20@gmail.com'
+            throw e
         }
     }
 
