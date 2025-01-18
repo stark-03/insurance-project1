@@ -9,30 +9,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PolicyController {
-	
-	@Autowired
-	PolicyService policyService;
-	
-	@GetMapping("/hello")
-	public String sayHello() {
-		return "hello";
-	}
-	
-	@GetMapping("/createPolicy")
-	public Policy createPolicy() {
-		return policyService.createPolicy();  // Corrected the method call
-	}
-	
-	@PostMapping("/createPolicy")
-	public Policy createPolicy(@RequestBody Policy policy) {
-		if (policy != null) {
-			return policyService.registerPolicy(policy);
-		}
-		return null;
-	}
+    
+    @Autowired
+    PolicyService policyService;
+    
+    @GetMapping("/hello")
+    public String sayHello() {
+        return "hello";
+    }
+    
+    @GetMapping("/createPolicy")
+    public Policy createPolicy() {
+        return policyService.createPolicy();
+    }
+    
+    @PostMapping("/createPolicy")
+    public Policy createPolicy(@RequestBody Policy policy) {
+        if (policy != null) {
+            return policyService.registerPolicy(policy);
+        }
+        return null;
+    }
 
-	@GetMapping("/getPolicy/{policyId}")
-	public Policy getPolicyDetails(@PathVariable(value = "policyId") Long policyId) {
-		return policyService.getPolicyDetails(policyId);  // Corrected parameter type to Long
-	}
+    @GetMapping("/getPolicy/{policyId}")
+    public Policy getPolicyDetails(@PathVariable(value = "policyId") Integer policyId) {
+        return policyService.getPolicyDetails(policyId);
+    }
 }
