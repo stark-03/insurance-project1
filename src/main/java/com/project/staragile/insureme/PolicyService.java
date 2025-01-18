@@ -5,20 +5,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PolicyService {
-
+    
     @Autowired
     PolicyRepository policyRepository;
     
     public Policy createPolicy() {
         Policy policy = generateDummyPolicy();
-        return policyRepository.save(policy);  // Ensure it returns the saved Policy object
+        return policyRepository.save(policy);
     }
 
     public Policy updatePolicy(Policy updatedPolicy) {
-        return policyRepository.save(updatedPolicy);  // Save the updated Policy object
+        return policyRepository.save(updatedPolicy);
     }
     
-    public boolean deletePolicy(Long policyId) {
+    public boolean deletePolicy(Integer policyId) {
         if (policyRepository.existsById(policyId)) {
             policyRepository.deleteById(policyId);
             return true;
@@ -26,19 +26,19 @@ public class PolicyService {
         return false;
     }
     
-    public Policy searchPolicy(Long policyId) {
-        return policyRepository.findById(policyId).orElse(null);  // Return Policy if found, otherwise null
+    public Policy searchPolicy(Integer policyId) {
+        return policyRepository.findById(policyId).orElse(null);
     }
 
     public Policy generateDummyPolicy() {
-        return new Policy(1L, "Shubham", "Individual", 10000, "10-Sep-2021", "10-Sep-2022");  // Use Long for IDs
+        return new Policy(1, "Shubham", "Individual", 10000, "10-Sep-2021", "10-Sep-2022");
     }
 
     public Policy registerPolicy(Policy policy) {
-        return policyRepository.save(policy);  // Save the Policy and return it
+        return policyRepository.save(policy);
     }
 
-    public Policy getPolicyDetails(Long policyId) {
-        return policyRepository.findById(policyId).orElse(null);  // Return Policy details if found, otherwise null
+    public Policy getPolicyDetails(Integer policyId) {
+        return policyRepository.findById(policyId).orElse(null);
     }
 }
